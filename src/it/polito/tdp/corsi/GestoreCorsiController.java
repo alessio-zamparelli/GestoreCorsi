@@ -1,8 +1,10 @@
 package it.polito.tdp.corsi;
 
 import java.net.URL;
+import java.util.List;
 import java.util.ResourceBundle;
 
+import it.polito.tdp.corsi.model.Corso;
 import it.polito.tdp.corsi.model.GestoreCorsi;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -39,6 +41,25 @@ public class GestoreCorsiController {
 
 	@FXML
 	void doCercaCorsi(ActionEvent event) {
+
+		int periodo;
+		txtResult.clear();
+		try {
+			periodo = Integer.parseInt(txtPeriodo.getText());
+
+		} catch (NumberFormatException e) {
+			txtResult.appendText("Devi inserire un periodo didattico (1 o 2)\n");
+			return;
+		}
+		if (periodo != 1 && periodo != 2) {
+			txtResult.appendText("Devi inserire un periodo didattico (1 o 2)\n");
+			return;
+		}
+		
+		List<Corso> corsi = this.model.getCorsiByPeriodo(periodo);
+		for (Corso c : corsi) {
+			txtResult.appendText(c.toString() + "\n");
+		}
 
 	}
 
