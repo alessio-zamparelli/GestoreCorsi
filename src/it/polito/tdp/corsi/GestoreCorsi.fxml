@@ -9,10 +9,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-
-<BorderPane xmlns:fx="http://javafx.com/fxml/1"
-	xmlns="http://javafx.com/javafx/8.0.171"
-	fx:controller="it.polito.tdp.corsi.GestoreCorsiController">
+<BorderPane xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="it.polito.tdp.corsi.GestoreCorsiController">
 	<center>
 		<TextArea fx:id="txtResult" BorderPane.alignment="CENTER" />
 	</center>
@@ -23,10 +20,8 @@
 					<children>
 						<Label text="Periodo" />
 						<TextField fx:id="txtPeriodo" />
-						<Button fx:id="btnCercaCorsi" mnemonicParsing="false"
-							onAction="#doCercaCorsi" text="Cerca corsi" />
-						<Button fx:id="btnStatCorsi" mnemonicParsing="false"
-							onAction="#doCalcolaStatCorsi" text="Statistiche corsi" />
+						<Button fx:id="btnCercaCorsi" mnemonicParsing="false" onAction="#doCercaCorsi" text="Cerca corsi" />
+						<Button fx:id="btnStatCorsi" mnemonicParsing="false" onAction="#doCalcolaStatCorsi" text="Statistiche corsi" />
 					</children>
 					<VBox.margin>
 						<Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
