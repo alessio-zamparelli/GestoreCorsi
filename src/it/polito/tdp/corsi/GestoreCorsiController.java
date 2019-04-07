@@ -46,8 +46,23 @@ public class GestoreCorsiController {
 	@FXML
 	private Button btnCDS;
 
+	//- dato un corso, stampare la divisione degli studenti iscritti tra i vari Corsi di Studio (CDS)
 	@FXML
 	void doCalcolaStatCDS(ActionEvent event) {
+
+		String corso;
+		
+		txtResult.clear();
+		corso = txtPeriodo.getText();
+		
+		// TODO: manca il controllo sulla correttezza della stringa in ingresso
+		
+		Map<Corso, Integer> res = model.getCDSPerCorso(corso);
+
+		txtResult.clear();
+		for (Entry entry : res.entrySet()) {
+			txtResult.appendText(((Corso) entry.getKey()).getNome() + "->" + entry.getValue() + "\n");
+		}
 
 	}
 
@@ -57,6 +72,7 @@ public class GestoreCorsiController {
 
 		String codins = txtCorso.getText();
 		List<Studente> studenti = this.model.elencaStudenti(codins);
+		txtResult.clear();
 		for (Studente studente : studenti) 
 			txtResult.appendText(studente.toString() + "\n");
 		

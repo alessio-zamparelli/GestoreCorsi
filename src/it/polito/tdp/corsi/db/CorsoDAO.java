@@ -95,4 +95,31 @@ public class CorsoDAO {
 		return result;
 	}
 
+	public Map<Corso, Integer> getCDSPerCorso(String corso) {
+		String sql = "SELECT s.CDS, COUNT(s.CDS) as cnt FROM iscrizione i, studente s, corso c "
+				+ "WHERE i.codins = c.codins AND s.matricola = i.matricola AND i.codins = ? GROUP BY s.cds";
+
+		Map<Corso, Integer> result = new HashMap<Corso, Integer>();
+
+		try {
+
+			Connection conn = ConnectDB.getConnection();
+			PreparedStatement st = conn.prepareStatement(sql);
+			st.setString(1, corso);
+			ResultSet rs = st.executeQuery();
+
+			while (rs.next()) {
+				Corso c = new Corso(rs.getString("codins"), rs.getInt("crediti"), rs.getString("nome"), rs.getInt("pd"));
+				result.put(c, rs.getInt("cnt"));
+			}
+
+			conn.close();
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+
+		return result;
+	}
+
 }

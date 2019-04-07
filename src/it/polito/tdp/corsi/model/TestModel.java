@@ -18,6 +18,11 @@ public class TestModel {
 		for (Entry entry : res.entrySet()) {
 			System.out.println(((Corso) entry.getKey()).getNome() + "=" + entry.getValue());
 		}
+		
+		res = model.getCDSPerCorso("01NBAPG");
+		for (Entry entry : res.entrySet()) {
+			System.out.println(entry.getKey() + "->" + entry.getValue());
+		}
 
 	}
 }

@@ -36,4 +36,8 @@ public class GestoreCorsi {
 		return sdao.elencaStudenti(codins);
 	}
 
+	public Map<Corso, Integer> getCDSPerCorso(String corso) {
+		return cdao.getCDSPerCorso(corso);
+	}
+
 }
